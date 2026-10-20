@@ -1,0 +1,23 @@
+name: Demo CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Simulate tests
+        run: |
+          echo "Running application tests..."
+          echo "Checking payment module..."
+          echo "ERROR: Payment validation test failed"
+          exit 1
