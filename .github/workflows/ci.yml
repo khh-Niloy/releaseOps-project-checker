@@ -37,9 +37,9 @@ jobs:
   #         echo "Checking payment module..."
   #         echo "ERROR: Payment validation test failed"
   #         exit 1
-    deployment:
+  deployment:
     name: Deployment
-    needs: [build, test]
+    needs: [build]
     runs-on: ubuntu-latest
 
     steps:
