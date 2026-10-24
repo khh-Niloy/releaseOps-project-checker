@@ -1,4 +1,4 @@
-name: Mock Deployment CI/CD
+name: Mock Failure Deployment CI/CD
 
 on:
   push:

@@ -1,0 +1,51 @@
+name: Mock Success Deployment CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Simulate Docker build
+        run: |
+          echo "Building Docker image..."
+          echo "Docker image built successfully."
+
+      - name: Simulate Docker push
+        run: |
+          echo "Pushing image to DockerHub..."
+          echo "Image pushed successfully."
+
+  deployment:
+    name: Deployment
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Run deployment command
+        run: |
+          echo "Connecting to development server..."
+          echo "Running deployment commands..."
+          echo "Changing to deployment directory..."
+          echo "Docker Compose deployment completed successfully."
+
+  discord:
+    name: Discord Notifications
+    runs-on: ubuntu-latest
+    needs: deployment
+    if: always()
+
+    steps:
+      - name: Simulate deployment success notification
+        if: needs.deployment.result == 'success'
+        run: |
+          echo "Development deployment succeeded!"
+          echo "Success notification sent to Discord."
